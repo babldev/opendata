@@ -1,0 +1,9 @@
+# Visualizing data
+matplotlib
+
+# Library exports pandas dataframes
+pandas
+
+# Downloading data
+aiohttp
+selenium
