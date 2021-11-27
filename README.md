@@ -2,7 +2,40 @@
 
 Finds, downloads, parses, and standardizes public bikeshare data into a standard pandas dataframe format.
 
+```python
+from opendata.sources.bikeshare.bay_wheels import trips as bay_wheels
+
+trips_df, _ = await niceride.async_load(trip_sample_rate=1000)
+
+len(trips_df.index)
+# 8731
+
+trips_df.columns
+# Index(['started_at', 'ended_at', 'start_station_id', 'end_station_id',
+#        'start_station_name', 'end_station_name', 'rideable_type', 'ride_id',
+#        'start_lat', 'start_lng', 'end_lat', 'end_lng', 'gender', 'user_type',
+#        'bike_id', 'birth_year'],
+#       dtype='object')
+```
+
 An example analysis can be found here: https://observablehq.com/@brady/bikeshare
+
+Supports sampling and local file caching to improve performance.
+
+### Markets supported
+
+```python
+import opendata.sources.bikeshare.bay_wheels
+import opendata.sources.bikeshare.bixi
+import opendata.sources.bikeshare.divvy
+import opendata.sources.bikeshare.capital_bikeshare
+import opendata.sources.bikeshare.citi_bike
+import opendata.sources.bikeshare.cogo
+import opendata.sources.bikeshare.niceride
+import opendata.sources.bikeshare.bluebikes
+import opendata.sources.bikeshare.metro_bike_share
+import opendata.sources.bikeshare.indego
+```
 
 ## Bootstrap
 Set up your environment
