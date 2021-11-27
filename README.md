@@ -5,7 +5,7 @@ Finds, downloads, parses, and standardizes public bikeshare data into a standard
 ```python
 from opendata.sources.bikeshare.bay_wheels import trips as bay_wheels
 
-trips_df, _ = await niceride.async_load(trip_sample_rate=1000)
+trips_df, _ = await bay_wheels.async_load(trip_sample_rate=1000)
 
 len(trips_df.index)
 # 8731
