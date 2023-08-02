@@ -3,18 +3,7 @@ import asyncio
 import importlib
 import logging
 
-SUPPORTED_MARKETS = {
-    "bay_wheels",
-    "bixi",
-    "bluebikes",
-    "capital_bikeshare",
-    "citi_bike",
-    "cogo",
-    "divvy",
-    "indego",
-    "metro_bike_share",
-    "niceride",
-}
+from opendata.sources.bikeshare import SUPPORTED_MARKETS
 
 
 def market_to_csv(market: str, sample_rate: int) -> None:

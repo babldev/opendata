@@ -28,6 +28,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from opendata.data_source import DataSource
 
+SUPPORTED_MARKETS = {
+    "bay_wheels",
+    "bixi",
+    "bluebikes",
+    "capital_bikeshare",
+    "citi_bike",
+    "cogo",
+    "divvy",
+    "indego",
+    "metro_bike_share",
+    "niceride",
+}
+
 
 # create logger
 logger = logging.getLogger(__name__)
