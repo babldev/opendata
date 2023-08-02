@@ -480,7 +480,7 @@ async def download_url(
         with open(tmp_local_path, "wb") as fd:
             logger.info(f"Started downloading: {url} to {local_path}")
             while True:
-                chunk = await resp.content.read(2 ** 16)
+                chunk = await resp.content.read(2**16)
                 if not chunk:
                     break
                 fd.write(chunk)
