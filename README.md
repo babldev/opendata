@@ -64,7 +64,7 @@ python3 -m pip install -r requirements.txt
 
 Try the test export to CSV:
 ```bash
-python3 test.py
+python3 market_to_csv.py bay_wheels
 ```
 
 ## Updating pip requirements
