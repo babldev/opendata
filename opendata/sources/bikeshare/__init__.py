@@ -1,7 +1,5 @@
 import asyncio
-import csv
 import hashlib
-import io
 import logging
 import os
 import re
@@ -41,8 +39,6 @@ SUPPORTED_MARKETS = {
     "niceride",
 }
 
-
-# create logger
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -334,9 +330,9 @@ def open_and_concat_paths(
                                     )
                                 )
                     else:
-                        logging.warning(f"Unexpected file: {zipinfo.filename}")
+                        logger.warning(f"Unexpected file: {zipinfo.filename}")
         except:
-            logging.exception(
+            logger.exception(
                 f"Failed to open cached file {cached_file_info.local_path} from {cached_file_info.remote_path}"
             )
             continue
@@ -363,11 +359,11 @@ def log_csv_column_results(
     columns_missing = columns_expected - columns_found
     columns_unexpected = columns_found - columns_expected
     if columns_parsed:
-        logging.info(f"{log_label} columns parsed: {columns_parsed}")
+        logger.info(f"{log_label} columns parsed: {columns_parsed}")
     if columns_missing:
-        logging.warning(f"{log_label} columns missing: {columns_missing}")
+        logger.warning(f"{log_label} columns missing: {columns_missing}")
     if columns_unexpected:
-        logging.warning(f"{log_label} columns unexpected: {columns_unexpected}")
+        logger.warning(f"{log_label} columns unexpected: {columns_unexpected}")
 
 
 def extract_hrefs_from_url(
@@ -480,7 +476,7 @@ async def download_url(
     local_path = file_path_for_url(url=url, data_dir_path=data_dir_path)
     cached_file_info = CachedFileInfo(local_path=local_path, remote_path=url)
     if os.path.exists(local_path):
-        logging.debug(f"File {url} cached at {local_path}")
+        logger.debug(f"File {url} cached at {local_path}")
         return cached_file_info
 
     tmp_local_path = local_path + ".tmp"
