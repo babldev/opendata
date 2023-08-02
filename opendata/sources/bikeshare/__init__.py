@@ -453,7 +453,9 @@ async def async_download_urls(
     async with aiohttp.ClientSession() as session:
         return await asyncio.gather(
             *[
-                download_url(data_dir_path=data_dir_path, session=session, url=url)
+                download_url_with_retry(
+                    data_dir_path=data_dir_path, session=session, url=url
+                )
                 for url in urls
             ]
         )
@@ -488,6 +490,22 @@ async def download_url(
     os.replace(tmp_local_path, local_path)
     logger.info(f"Finished downloading: {url}")
     return cached_file_info
+
+
+async def download_url_with_retry(
+    data_dir_path: str, session: aiohttp.ClientSession, url: str, max_attempts: int = 3
+) -> CachedFileInfo:
+    """Retry download up to 3 times"""
+    for i in range(max_attempts):
+        try:
+            return await download_url(
+                data_dir_path=data_dir_path, session=session, url=url
+            )
+        except:
+            logger.exception(f"Failed to download {url} on attempt {i+1}")
+            continue
+
+    raise Exception(f"Failed to download {url} after 3 attempts")
 
 
 def merge_stations_table(
