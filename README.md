@@ -6,7 +6,7 @@ Finds, downloads, parses, and standardizes public bikeshare data into a standard
 python3 market_to_csv.py bay_wheels --sample-rate 1000
 ```
 
-An example analysis can be found here: https://observablehq.com/@brady/bikeshare
+An example analysis can be found here: [https://observablehq.com/@brady/bikeshare](https://observablehq.com/@brady/bikeshare-2023)
 
 Supports sampling, local file caching, and networking retries to improve performance.
 
