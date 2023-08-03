@@ -1,6 +1,6 @@
 # opendata
 
-Finds, downloads, parses, and standardizes public bikeshare data into a standard pandas dataframe format.
+Finds, downloads, parses, and standardizes public bikeshare data into a standard CSV format.
 
 ```sh
 python3 market_to_csv.py bay_wheels --sample-rate 1000
@@ -9,28 +9,6 @@ python3 market_to_csv.py bay_wheels --sample-rate 1000
 An example analysis can be found here: https://observablehq.com/@brady/bikeshare-2023
 
 Supports sampling, local file caching, and networking retries to improve performance.
-
-## Bootstrap
-Set up your environment
-```sh
-brew install chromedriver
-brew install python3
-python3 -m pip install pre-commit
-```
-
-```sh
-pre-commit install --install-hooks
-python3 -m venv venv
-source venv/bin/activate
-python3 -m pip install -r requirements.txt
-```
-
-## Usage
-
-Try the test export to CSV:
-```sh
-python3 market_to_csv.py bay_wheels --sample-rate 1000
-```
 
 ### Markets supported
 
@@ -45,6 +23,21 @@ python3 market_to_csv.py niceride
 python3 market_to_csv.py bluebikes
 python3 market_to_csv.py metro_bike_share
 python3 market_to_csv.py indego
+```
+
+## Bootstrap
+Set up your environment
+```sh
+brew install chromedriver
+brew install python3
+python3 -m pip install pre-commit
+```
+
+```sh
+pre-commit install --install-hooks
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
 ```
 
 ## Updating pip requirements
